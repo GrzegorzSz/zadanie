@@ -18,12 +18,12 @@ public class NewTaskCreatorTest {
     }
     @Test
     public void TaskListExsist(){
-        Assert.assertNotNull(TaskList.TaskList);
+        Assert.assertNotNull(TaskList.taskList);
     }
     @Test
     public void newTaskTest(){
         int id = createNewTask.createNewTask("foo");
-        System.out.println(TaskList.TaskList.get(0).id);
+        System.out.println(TaskList.taskList.get(0).id);
         Assert.assertTrue(id > 0);
     }
 

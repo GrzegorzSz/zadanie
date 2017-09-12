@@ -5,7 +5,7 @@ import java.util.List;
 public interface TaskCalculationDataSetter {
 
     /**
-     * gets numers and operator for arithmetic operation
+     * sets numers and operator for arithmetic operation
      * @param operator single char refers one of four basic arithmetic
      *                 operation (+, -, *, /)
      */

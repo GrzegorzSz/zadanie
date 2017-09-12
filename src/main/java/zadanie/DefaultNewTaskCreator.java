@@ -10,7 +10,7 @@ public class DefaultNewTaskCreator implements NewTaskCreator {
         newTask = new Task(0, "");
         newTask.id = newTask.hashCode();
         newTask.isCalculated = false;
-        TaskList.TaskList.add(newTask);
+        TaskList.taskList.add(newTask);
         return newTask.id;
     }
 }
