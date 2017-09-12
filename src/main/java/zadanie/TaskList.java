@@ -2,10 +2,10 @@ package zadanie;
 
 import java.util.ArrayList;
 
-public class Tasklist {
-    public ArrayList<Task> TaskList;
+public class TaskList {
+    public static ArrayList<Task> TaskList;
 
-    public Tasklist() {
+    public TaskList() {
         TaskList = new ArrayList<Task>();
     }
 }
