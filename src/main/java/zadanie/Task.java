@@ -12,7 +12,7 @@ public class Task {
     Task(int id, String descrpition){
         this.id = id;
         this.descrpition = descrpition;
-        this.result = 0;
+        //this.result = 0;
         this.isCalculated = false;
         this.operator = null;
         this.numbers = null;
@@ -40,12 +40,18 @@ public class Task {
 
                 break;
             case SUBTRACT:
+                for (int index = 1; index < numbers.size(); index++) {
+                    if(numbers.get(index) == 0){
+                        System.out.println("Can't divide by 0");
+                        return;
+                    }
+                }
                 result = numbers.get(0);
                 for (int index = 1; index < numbers.size(); index++) {
                     result -= numbers.get(index);
                 }
                 break;
         }
-        
+        isCalculated = true;
     }
 }

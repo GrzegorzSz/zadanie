@@ -4,35 +4,51 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class TaskCalculatorTest {
 
+    TaskList tl;
     private NewTaskCreator newTaskCreator;
     private TaskCalculator taskCalculator;
-    private TaskResultRepository taskResultRepository;
+    private TaskCalculateVerifier taskResultRepository;
     private TaskCalculationDataSetter taskCalculationDataSetter;
+    private TaskRepository taskRepository;
     private int id;
 
     @Before
     public void setup() {
-        newTaskCreator = null;
-        taskCalculator = null;
+        tl = new TaskList();
+        newTaskCreator = new DefaultNewTaskCreator();
+        taskCalculator = new DefaultTaskCalculator();
+        taskRepository = new DefaultTaskRepository();
+        taskCalculationDataSetter = new DefaultTaskCalculationDataSetter();
         id = newTaskCreator.createNewTask("some task");
         Assert.assertTrue(id > 0);
 
-        taskCalculationDataSetter.setNumbers(Arrays.asList(2d, 2d), id);
+        ArrayList<Double> numList = new ArrayList();
+        numList.add(2d);
+        numList.add(2d);
+        taskCalculationDataSetter.setNumbers(numList, id);
+        //taskCalculationDataSetter.setNumbers(Arrays.asList(2d, 2d), id);
         taskCalculationDataSetter.setOperator(Operator.ADD, id);
     }
 
     @Test
     public void CalculateTest() {
-        Optional<Double> result = taskResultRepository.getCalculatedTask(id);
+        /*Optional<Double> result = taskResultRepository.getCalculatedTask(id);
         Assert.assertFalse(result.isPresent());
 
         taskCalculator.calculate(id);
         result = taskResultRepository.getCalculatedTask(id);
+        Assert.assertTrue(result.isPresent());
+        Assert.assertEquals(4, result.get(), 0);*/
+
+        Optional<Double> result = null;
+
+        taskCalculator.calculate(id);
+        result = Optional.ofNullable(taskRepository.getExistingTask(id).result);
         Assert.assertTrue(result.isPresent());
         Assert.assertEquals(4, result.get(), 0);
     }
