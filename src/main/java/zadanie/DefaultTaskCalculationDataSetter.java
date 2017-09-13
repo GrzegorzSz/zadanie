@@ -7,13 +7,24 @@ public class DefaultTaskCalculationDataSetter implements TaskCalculationDataSett
     Task task = null;
     @Override
     public void setOperator(Operator operator, int taskId) {
-        task = TaskList.taskList.get(TaskList.findTaskById(taskId));
+
+        try {
+            task = TaskList.findTaskById(taskId);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+            return;
+        }
         task.operator = operator;
     }
 
     @Override
     public void setNumbers(List<Double> numbers, int taskId) {
-        task = TaskList.taskList.get(TaskList.findTaskById(taskId));
+        try {
+            task = TaskList.findTaskById(taskId);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+            return;
+        }
         task.numbers = (ArrayList<Double>)numbers;
     }
 }

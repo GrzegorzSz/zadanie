@@ -8,10 +8,11 @@ public class TaskList {
     public TaskList() {
         taskList = new ArrayList<Task>();
     }
-    public static int findTaskById(int taskId){
+
+    public static Task findTaskById(int taskId){
         for (int index = 0; index < taskList.size(); index++) {
             if(taskList.get(index).id == taskId){
-                return index;
+                return taskList.get(index);
             }
         }
         throw new IllegalArgumentException("no object with that id.");

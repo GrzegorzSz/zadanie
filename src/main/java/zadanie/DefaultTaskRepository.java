@@ -5,18 +5,25 @@ import java.util.List;
 import java.util.Optional;
 
 public class DefaultTaskRepository implements TaskRepository {
-    private ArrayList<Task> TaskList;
-    public DefaultTaskRepository(ArrayList<Task> TaskList){
-        this.TaskList = TaskList;
+    Task task;
+    public DefaultTaskRepository(){
+        task = null;
     }
 
     @Override
     public Task getExistingTask(int taskID) {
-        return null;
+        try {
+            task = TaskList.findTaskById(taskID);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            System.out.println(e);
+            task = new Task(1, "error");
+        }
+        return task;
     }
 
     @Override
     public List getAllTasks() {
-        return TaskList;
+        return TaskList.taskList;
     }
 }
