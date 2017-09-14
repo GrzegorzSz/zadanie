@@ -2,6 +2,7 @@ package zadanie;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public interface TaskRepository {
     /**
@@ -10,6 +11,7 @@ public interface TaskRepository {
      * @param taskID must be grater than 0
      * @return requested task
      */
-    Task getExistingTask(int taskID);
+    //todo: consider changing a name and a return typw
+    Optional getExistingTask(int taskID);
     List getAllTasks();
 }

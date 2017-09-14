@@ -48,7 +48,8 @@ public class TaskCalculatorTest {
         Optional<Double> result = null;
 
         taskCalculator.calculate(id);
-        result = Optional.ofNullable(taskRepository.getExistingTask(id).result);
+//        result = Optional.ofNullable(taskRepository.getExistingTask(id).result);
+        result = taskRepository.getExistingTask(id);
         Assert.assertTrue(result.isPresent());
         Assert.assertEquals(4, result.get(), 0);
     }

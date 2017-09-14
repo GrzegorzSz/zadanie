@@ -3,11 +3,7 @@ package zadanie;
 import java.util.ArrayList;
 
 public class TaskList {
-    public static ArrayList<Task> taskList;
-
-    public TaskList() {
-        taskList = new ArrayList<Task>();
-    }
+    public static ArrayList<Task> taskList = new ArrayList<>();
 
     public static Task findTaskById(int taskId){
         for (int index = 0; index < taskList.size(); index++) {
@@ -15,7 +11,9 @@ public class TaskList {
                 return taskList.get(index);
             }
         }
-        throw new IllegalArgumentException("no object with that id.");
+        return null;
+//        brak tej lini w razie optionala w defaultTaskRepository
+//        throw new IllegalArgumentException("no object with that id.");
     }
 }
 

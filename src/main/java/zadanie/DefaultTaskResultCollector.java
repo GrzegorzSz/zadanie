@@ -6,8 +6,10 @@ public class DefaultTaskResultCollector implements TaskResultCollector {
         Task task = TaskList.findTaskById(taskID);
         if (!task.isCalculated) {
             throw new IllegalArgumentException("This task was not calculated");
-        } else {
-            return task.result;
         }
+        return task.result;
+//        else {
+//            return task.result;
+//        }
     }
 }

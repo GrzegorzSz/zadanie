@@ -4,6 +4,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 public class NewTaskCreatorTest {
 
     //todo:
@@ -29,8 +33,13 @@ public class NewTaskCreatorTest {
 
     @Test
     public void newTaskTest_manyTasks(){
-        int id1 = createNewTask.createNewTask("foo");
-        int id2 = createNewTask.createNewTask("foo");
-        Assert.assertNotEquals(id1,id2);
+        int count = 10_000;
+        Set<Integer> set = new HashSet<>();
+        for(int i=0;i<count;i++){
+            set.add(createNewTask.createNewTask(UUID.randomUUID().toString()));
+        }
+//        int id1 = createNewTask.createNewTask("foo");
+//        int id2 = createNewTask.createNewTask("foo");
+        Assert.assertEquals(count,set.size());
     }
 }

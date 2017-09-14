@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class TaskRepositoryTest {
     private NewTaskCreator taskCreator;
@@ -26,17 +27,20 @@ public class TaskRepositoryTest {
     }
     @Test
     public void getExistingTask(){
-        Task task = taskRepository.getExistingTask(zadanie1);
-        Task task1 = taskRepository.getExistingTask(zadanie2);
-        Assert.assertTrue(task.id > 0);
-        Assert.assertTrue(task1.id >0);
-        Assert.assertTrue("tasks are not the same obj", task.id != task1.id);
+//        Task sometask = (taskRepository.getExistingTask(zadanie1).get()).orElse(null);    ????
+        Optional<Task> task = taskRepository.getExistingTask(zadanie1);
+        Assert.assertTrue(task.isPresent());
+        Optional<Task> task1 = taskRepository.getExistingTask(zadanie2);
+        Assert.assertTrue(task1.isPresent());
+        Assert.assertTrue(task.get().id > 0);
+        Assert.assertTrue(task1.get().id >0);
+        Assert.assertTrue("tasks are not the same obj", task.get().id != task1.get().id);
     }
 
     @Test
     public void testTaskNotFound(){
-        Task task  = taskRepository.getExistingTask(1);
-        Assert.assertEquals(task.descrpition, "error");
+        Optional task  = taskRepository.getExistingTask(1);
+        Assert.assertFalse(task.isPresent());
     }
     @Test
     public void getAllTasks(){

@@ -33,6 +33,12 @@ public class Task {
                 }
                 break;
             case DIVIDE:
+                for (int index = 1; index < numbers.size(); index++) {
+                    if(numbers.get(index) == 0){
+                        System.out.println("Can't divide by 0");
+                        return;
+                    }
+                }
                 result = numbers.get(0);
                 for (int index = 1; index < numbers.size(); index++) {
                     result /= numbers.get(index);
@@ -40,12 +46,6 @@ public class Task {
 
                 break;
             case SUBTRACT:
-                for (int index = 1; index < numbers.size(); index++) {
-                    if(numbers.get(index) == 0){
-                        System.out.println("Can't divide by 0");
-                        return;
-                    }
-                }
                 result = numbers.get(0);
                 for (int index = 1; index < numbers.size(); index++) {
                     result -= numbers.get(index);

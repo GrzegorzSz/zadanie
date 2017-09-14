@@ -5,8 +5,10 @@ public class DefaultTaskResultRepository implements TaskCalculateVerifier {
     @Override
     public boolean getCalculatedTask(int taskID) {
         task = TaskList.findTaskById(taskID);
-        if(task.isCalculated)
-            return true;
-        return false;
+//        if(task.isCalculated)
+//            return true;
+//        return false;
+
+        return task.isCalculated;
     }
 }
