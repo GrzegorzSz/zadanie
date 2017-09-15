@@ -6,11 +6,11 @@ public class DefaultNewTaskCreator implements NewTaskCreator {
 
     @Override
     public int createNewTask(String description) {
-        newTask = new Task(TaskList.taskList.size(), "");
+        newTask = new Task(DefaultTaskRepository.taskList.size(), "");
 
         newTask.descrpition = description;
         newTask.isCalculated = false;
-        TaskList.taskList.add(newTask);
+        DefaultTaskRepository.taskList.add(newTask);
         return newTask.id;
     }
 }

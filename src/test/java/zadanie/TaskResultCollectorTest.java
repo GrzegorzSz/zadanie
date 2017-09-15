@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class TaskResultCollectorTest {
 
-    TaskList tl;
     NewTaskCreator newTaskCreator;
     TaskResultCollector taskResultCollector;
     TaskCalculationDataSetter taskCalculationDataSetter;
@@ -16,7 +15,7 @@ public class TaskResultCollectorTest {
     ArrayList<Double> numbers = null;
     @Before
     public void setup(){
-        tl = new TaskList();
+
         newTaskCreator = new DefaultNewTaskCreator();
         taskResultCollector = new DefaultTaskResultCollector();
         taskCalculationDataSetter = new DefaultTaskCalculationDataSetter();

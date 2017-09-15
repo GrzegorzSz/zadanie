@@ -13,11 +13,11 @@ public class TaskRepositoryTest {
     TaskRepository taskRepository;
     int zadanie1;
     int zadanie2;
-    TaskList tl;
+
     
     @Before
     public void setup(){
-        tl = new TaskList();
+
         taskCreator = new DefaultNewTaskCreator();
         taskRepository = new DefaultTaskRepository();
         zadanie1 = taskCreator.createNewTask("zadanie1");
@@ -32,14 +32,14 @@ public class TaskRepositoryTest {
         Assert.assertTrue(task.isPresent());
         Optional<Task> task1 = taskRepository.getExistingTask(zadanie2);
         Assert.assertTrue(task1.isPresent());
-        Assert.assertTrue(task.get().id > 0);
-        Assert.assertTrue(task1.get().id >0);
+        Assert.assertTrue(task.get().id >= 0);
+        Assert.assertTrue(task1.get().id >=0);
         Assert.assertTrue("tasks are not the same obj", task.get().id != task1.get().id);
     }
 
     @Test
     public void testTaskNotFound(){
-        Optional task  = taskRepository.getExistingTask(1);
+        Optional task  = taskRepository.getExistingTask(6);
         Assert.assertFalse(task.isPresent());
     }
     @Test

@@ -9,23 +9,25 @@ import java.util.Optional;
 
 public class TaskCalculatorTest {
 
-    TaskList tl;
+
     private NewTaskCreator newTaskCreator;
     private TaskCalculator taskCalculator;
-    private TaskCalculateVerifier taskResultRepository;
+    private TaskCalculateVerifier taskCalculateVerifier;
     private TaskCalculationDataSetter taskCalculationDataSetter;
     private TaskRepository taskRepository;
     private int id;
 
     @Before
     public void setup() {
-        tl = new TaskList();
+
         newTaskCreator = new DefaultNewTaskCreator();
         taskCalculator = new DefaultTaskCalculator();
         taskRepository = new DefaultTaskRepository();
+        taskCalculateVerifier = new DefaultTaskCalculateVerifier();
         taskCalculationDataSetter = new DefaultTaskCalculationDataSetter();
         id = newTaskCreator.createNewTask("some task");
-        Assert.assertTrue(id > 0);
+        System.out.println("new task id: " + id);
+        Assert.assertTrue(id >= 0);
 
         ArrayList<Double> numList = new ArrayList();
         numList.add(2d);
@@ -45,12 +47,12 @@ public class TaskCalculatorTest {
         Assert.assertTrue(result.isPresent());
         Assert.assertEquals(4, result.get(), 0);*/
 
-        Optional<Double> result = null;
+        Optional<Task> result;
 
         taskCalculator.calculate(id);
 //        result = Optional.ofNullable(taskRepository.getExistingTask(id).result);
         result = taskRepository.getExistingTask(id);
         Assert.assertTrue(result.isPresent());
-        Assert.assertEquals(4, result.get(), 0);
+        Assert.assertEquals(4, result.get().result, 0);
     }
 }

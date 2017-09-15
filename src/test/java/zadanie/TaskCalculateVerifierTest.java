@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class TaskCalculateVerifierTest {
-    private TaskList taskList;
+
     private NewTaskCreator newTaskCreator;
     private TaskCalculator taskCalculator;
     private TaskCalculationDataSetter dataSetter;
@@ -17,10 +17,10 @@ public class TaskCalculateVerifierTest {
 
     @Before
     public void setup(){
-        taskList = new TaskList();
+
         newTaskCreator = new DefaultNewTaskCreator();
         taskCalculator = new DefaultTaskCalculator();
-        taskCalculateVerifier = new DefaultTaskResultRepository();
+        taskCalculateVerifier = new DefaultTaskCalculateVerifier();
         dataSetter = new DefaultTaskCalculationDataSetter();
         numbersForRequests = new ArrayList<>();
         numbersForRequests.add(4d);

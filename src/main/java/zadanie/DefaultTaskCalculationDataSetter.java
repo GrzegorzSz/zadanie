@@ -9,7 +9,7 @@ public class DefaultTaskCalculationDataSetter implements TaskCalculationDataSett
     public void setOperator(Operator operator, int taskId) {
 
         try {
-            task = TaskList.findTaskById(taskId);
+            task = DefaultTaskRepository.findTaskById(taskId);
             task.operator = operator;
         } catch (IllegalArgumentException e) {
 //            System.out.println(e);
@@ -21,7 +21,7 @@ public class DefaultTaskCalculationDataSetter implements TaskCalculationDataSett
     @Override
     public void setNumbers(List<Double> numbers, int taskId) {
         try {
-            task = TaskList.findTaskById(taskId);
+            task = DefaultTaskRepository.findTaskById(taskId);
             task.numbers = (ArrayList<Double>)numbers;
         } catch (IllegalArgumentException e) {
 //            System.out.println(e);

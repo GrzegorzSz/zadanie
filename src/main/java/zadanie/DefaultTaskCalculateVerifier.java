@@ -1,10 +1,10 @@
 package zadanie;
 
-public class DefaultTaskResultRepository implements TaskCalculateVerifier {
+public class DefaultTaskCalculateVerifier implements TaskCalculateVerifier {
     Task task;
     @Override
     public boolean getCalculatedTask(int taskID) {
-        task = TaskList.findTaskById(taskID);
+        task = DefaultTaskRepository.findTaskById(taskID);
 //        if(task.isCalculated)
 //            return true;
 //        return false;
