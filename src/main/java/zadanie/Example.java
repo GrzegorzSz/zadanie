@@ -6,28 +6,28 @@ import java.util.List;
 import java.util.Map;
 
 public class Example {
-    Map<Integer, List<XX>> map;
+    Map<Integer, List<Equasion>> map;
 
 
-    public void addEquasions(int taskId, List<XX> ops){
+    public void addEquasions(int taskId, List<Equasion> ops){
         map.put(taskId,ops);
 
 
     }
 
     public Calculation getCalculation(int taskId){
-        List<XX> equasions = map.get(taskId);
+        List<Equasion> equasions = map.get(taskId);
 
         Object a1 = equasions.get(0);
         Object a2 = equasions.get(1);
 
-        a1.getEquasion();
-        a1.getNextEquasionOperator();
+//        a1.getEquasion();
+//        a1.getNextEquasionOperator();
 
 
         Calculation calculation = null;
         calculation.calc();
-
+        return null;
     }
 
     interface  Calculation{
@@ -37,7 +37,8 @@ public class Example {
 
    static class DecoratorCalculation implements Calculation{
 
-        XX xx;
+//        XX xx;
+
         private Calculation c1;
         private Calculation c2;
         Operator operator;
@@ -54,7 +55,7 @@ public class Example {
    }
     static class SingleCalculation implements Calculation{
 
-        Equasion equasion;
+        Equasion equasion = new Equasion();
 
         public SingleCalculation(List<Double> doubles, Operator operator) {
             equasion.data = doubles;
